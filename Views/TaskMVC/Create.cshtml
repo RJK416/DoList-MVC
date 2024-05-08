@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Create your Task @User.Identity.Name</h1>
+            <form id="createTaskForm">
+                <div class="form-group">
+                    <label for="Name">Name:</label>
+                    <input type="text" id="Name" name="Name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <input type="text" id="Description" name="Description" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $('#createTaskForm').submit(function (event) {
+            event.preventDefault();
+
+            var token = $('#authToken').val();
+
+            var userId = '@ViewBag.UserId';
+
+            var formData = {
+                Name: $('#Name').val(),
+                Description: $('#Description').val(),
+                AccID: userId
+            };
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: 'https://localhost:7039/api/Task/Create',
+                data: JSON.stringify(formData),
+                xhrFields: {
+                    withCredentials: true // Include cookies
+                },
+                success: function (response) {
+                    // Handle successful task creation
+                    toastr.success('Task created successfully');
+                    window.location.href = '/Dashboard';
+                },
+                error: function (xhr, status, error) {
+                    // Handle task creation error
+                    toastr.error('Error creating task: ' + error);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

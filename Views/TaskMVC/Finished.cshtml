@@ -1,0 +1,48 @@
+﻿@using System.Security.Claims
+
+
+
+<h1>Here is your finished tasks @User.Identity.Name</h1>
+
+
+<div class="finish-tasks-bar">
+    <h3>Tasks !:</h3>
+    <ul id="finish-tasks-list" class="list-group">
+        <!-- Active tasks will be appended here dynamically -->
+    </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    // Perform AJAX request to fetch active tasks
+    $(document).ready(function () {
+
+        $.ajax({
+            url: 'https://localhost:7039/api/MyAccount/GetFinishTasks',
+            type: 'POST',
+            data: { id: '@(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)' }, // Pass the account ID to the server
+            success: function (data) {
+                // Clear existing tasks
+                $('#finish-tasks-list').empty();
+
+                // Append fetched tasks to the list
+                $.each(data, function (index, task) {
+                    $('#finish-tasks-list').append(`
+                                            <li class="list-group-item">
+                                                <div>
+                                                    <strong>${task.name}</strong>, ${task.description}
+                                                </div>
+                                            </li>
+                                        `);
+                });
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(xhr.responseText);
+            }
+        });
+
+    });
+</script>
+

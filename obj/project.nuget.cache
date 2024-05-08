@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "o5pILWzIUDYUh3dFCVxKYXX+d78QTydzJqBvnU+7lwEHNSf5QebV0XZEWb+u3yy5zCx3A6CX8zbVMOE1XvZhjw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\source\\repos\\Final-ToDo-MVC\\DoListMVC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.13\\microsoft.netcore.app.host.win-x64.6.0.13.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

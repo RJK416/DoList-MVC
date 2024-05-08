@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the To Do Web</h1>
+    <p>Here you can create, manage and track your To Do's !</a></p>
+    <p>Please log or create new account to start !</a></p>
+
+    <a href="@Url.Action("Login", "MyAccountMVC")" class="btn btn-primary button-myaccount-position ">Log in</a>
+    <a href="@Url.Action("Create", "MyAccountMVC")" class="btn btn-primary button-createaccount-position ">Create account</a>
+</div>

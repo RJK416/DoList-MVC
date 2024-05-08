@@ -1,0 +1,117 @@
+@model DoListMVC.Models.ViewModels.AccountViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 50px;
+        }
+
+            .login-container h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-container">
+            <h1>Login</h1>
+            @if (TempData["NotificationMessage1"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["NotificationMessage1"]
+                </div>
+            }
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="AccName">Username:</label>
+                    <input type="text" id="AccName" name="AccName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+
+    @section scripts {
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            $(function () {
+                $('#loginForm').submit(function (event) {
+                    event.preventDefault();
+                    var formData = $(this).serialize(); // Serialize form data to URL-encoded string
+                    $.ajax({
+                        type: 'POST',
+                        contentType: "application/x-www-form-urlencoded",
+                        url: 'https://localhost:7039/api/MyAccount/Login',
+                        data: formData,
+                        success: function (response) {
+                            // Check if the login was unsuccessful
+                            if (!response.success) {
+                                // Display error message
+                                toastr.error(response.message);
+                            } else {
+                                // Make an AJAX POST request to the LoginAttempt method
+                                $.ajax({
+                                    type: 'POST',
+                                    contentType: "application/x-www-form-urlencoded",
+                                        url: '/MyAccountMVC/LoginAttempt', // Updated URL
+                                    data: {
+                                        AccName: response.accName,
+                                        Id: response.userId
+                                    },
+                                    success: function (data) {
+                                        // Handle the success response if needed
+                                        console.log("LoginAttempt method called successfully.");
+                                        // Now redirect to the Dashboard
+                                        window.location.href = '/Dashboard/';
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle any errors that occur during the AJAX request
+                                        console.error('An error occurred:', error);
+                                        // Still redirect to the Dashboard even if there's an error in LoginAttempt
+                                    }
+                                });
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error response
+                            toastr.error('An error occurred: ' + error);
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
+
+    </body>
+    </html>

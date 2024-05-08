@@ -1,0 +1,92 @@
+@page
+@model DoListMVC.Models.Task;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Task</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS for styling -->
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Edit Task @ViewBag.taskID</h1>
+            <form method="post" asp-controller="Task" asp-action="EditTask">
+                <div class="form-group">
+                    <input type="hidden" id="id" name="id" value="@ViewBag.taskID">
+
+                    <label for="name">To Do:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <input type="text" id="description" name="description" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Date">Date,To be done:</label>
+                    <input type="datetime-local" id="deadlineDate" name="deadlineDate" class="form-control" required>
+                </div>
+
+                <button type="button" id="submitBtn" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include Toastr library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include Toastr library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $('#submitBtn').click(function () {
+                // Serialize form data
+                var TaskId = '@ViewBag.taskID';
+
+                var formData = {
+                    name: $('#name').val(),
+                    Description: $('#Description').val(),
+                };
+
+                $.ajax({
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    url: `https://localhost:7039/api/Task/EditTask/${TaskId}`,
+                    data: JSON.stringify(formData),
+                    xhrFields: {
+                        withCredentials: true // Include cookies
+                    },
+                    success: function (response) {
+                        // Handle successful task creation
+                        toastr.success('Task created successfully');
+                        window.location.href = '/Dashboard';
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle task creation error
+                        toastr.error('Error creating task: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    @if (TempData["NotificationMessage"] != null)
+    {
+        <script>
+            // Display a toastr notification
+            toastr.error('@TempData["NotificationMessage"]');
+        </script>
+    }
+
+</body>
+</html>

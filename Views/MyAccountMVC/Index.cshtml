@@ -1,0 +1,136 @@
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "My Account";
+}
+
+@model DoListMVC.Models.ViewModels.AccountViewModel;
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+<!-- Other head elements -->
+
+
+<div class="text-center">
+    <h1 class="display-4">Hello @User.Identity?.Name, This is your Page</h1>
+    <a href="@Url.Action("Create", "TaskMVC")" class="btn btn-primary button-createtask-position">Add To Do</a>
+
+    <a href="@Url.Action("Finished", "TaskMVC")" class="btn btn-primary button-createtask-position">Check Finished tasks </a>
+</div>
+
+<div class="active-tasks-bar">
+    <h3>To Do:</h3>
+    <ul id="active-tasks-list" class="list-group">
+        <!-- Active tasks will be appended here dynamically -->
+    </ul>
+</div>
+
+<style>
+    .active-tasks-bar {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+    }
+
+        .active-tasks-bar h3 {
+            color: #333;
+        }
+
+        .active-tasks-bar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .active-tasks-bar li {
+            margin-bottom: 5px;
+        }
+
+    .task-buttons {
+        margin-top: 5px;
+    }
+</style>
+
+@if (TempData["NotificationMessage"] != null)
+{
+    <script>
+        // Display a toastr notification
+        toastr.error('@TempData["NotificationMessage2"]');
+    </script>
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    // Perform AJAX request to fetch active tasks
+    $(document).ready(function () {
+
+        $.ajax({
+            url: 'https://localhost:7039/api/MyAccount/GetActiveTasks',
+            type: 'POST',
+            data: { id: '@(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)' }, // Pass the account ID to the server
+            success: function (data) {
+                // Clear existing tasks
+                $('#active-tasks-list').empty();
+
+                // Append fetched tasks to the list
+                $.each(data, function (index, task) {
+                    $('#active-tasks-list').append(`
+                                    <li class="list-group-item">
+                                        <div>
+                                            <strong>${task.name}</strong>, ${task.description}
+                                        </div>
+                                        <div class="task-buttons">
+                                            <a href="/TaskMVC/Edit/${task.id}" class="btn btn-warning">Edit</a>
+                                            <button class="btn btn-danger delete-task" data-task-id="${task.id}">Delete</button>
+                                            <button class="btn btn-success finish-task" data-task-id="${task.id}">Done</button>
+                                        </div>
+                                    </li>
+                                `);
+                });
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(xhr.responseText);
+            }
+        });
+
+        // Handle click event for delete buttons
+        $(document).on('click', '.delete-task', function () {
+            var $taskItem = $(this).closest('li');
+            var taskId = $(this).data('task-id');
+            $.ajax({
+                url: `https://localhost:7039/api/Task/DeleteTask/${taskId}`,
+                type: 'DELETE',
+                success: function () {
+                    $taskItem.remove();
+                    toastr.success('Task deleted successfully');
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        // Handle click event for finish buttons
+        $(document).on('click', '.finish-task', function () {
+            var $taskItem = $(this).closest('li');
+            var taskId = $(this).data('task-id');
+            $.ajax({
+                url: `https://localhost:7039/api/Task/FinishTask/${taskId}`,
+                type: 'POST',
+                success: function () {
+                    $taskItem.remove();
+                    toastr.success('Task finished successfully');
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
