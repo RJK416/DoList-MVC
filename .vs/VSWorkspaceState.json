@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\bin",
+    "\\Controllers",
+    "\\Models"
   ],
-  "SelectedNode": "\\C:\\Users\\user\\source\\repos\\Final-ToDo-MVC",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -9,69 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DoListMVC
 build_property.RootNamespace = DoListMVC
-build_property.ProjectDir = C:\Users\user\source\repos\Final-ToDo-MVC\
+build_property.ProjectDir = C:\Users\user\Source\Repos\Demo-repo\Final-ToDo-MVC\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\user\source\repos\Final-ToDo-MVC
+build_property.MSBuildProjectDirectory = C:\Users\user\Source\Repos\Demo-repo\Final-ToDo-MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/Home/Index.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/Home/Privacy.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/MyAccountMVC/Create.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/MyAccountMVC/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlBY2NvdW50TVZDXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/MyAccountMVC/Created.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/MyAccountMVC/Created.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlBY2NvdW50TVZDXENyZWF0ZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/MyAccountMVC/Index.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/MyAccountMVC/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlBY2NvdW50TVZDXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/MyAccountMVC/Login.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/MyAccountMVC/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlBY2NvdW50TVZDXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/Shared/Error.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/TaskMVC/BOBERO.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/TaskMVC/BOBERO.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza01WQ1xCT0JFUk8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/TaskMVC/Create.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/TaskMVC/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza01WQ1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/TaskMVC/Edit.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/TaskMVC/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza01WQ1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/TaskMVC/Finished.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/TaskMVC/Finished.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza01WQ1xGaW5pc2hlZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/_ViewImports.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/_ViewStart.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/Final-ToDo-MVC/Views/Shared/_Layout.cshtml]
+[C:/Users/user/source/repos/Demo-repo/Final-ToDo-MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2alpaznwdt
